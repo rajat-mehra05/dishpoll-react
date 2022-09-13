@@ -7,6 +7,7 @@ const Logout = () => {
 
   function handleLogout() {
     navigate("/");
+    localStorage.removeItem("authenticated");
   }
 
   return <Button onClick={handleLogout}>Logout</Button>;

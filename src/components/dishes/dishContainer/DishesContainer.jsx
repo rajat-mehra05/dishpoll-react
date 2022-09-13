@@ -29,7 +29,7 @@ const DishesContainer = () => {
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
-  }, [dishItems]);
+  }, []);
 
   // update dishes rank accordingly
   function updateDishesRanks(id, value) {

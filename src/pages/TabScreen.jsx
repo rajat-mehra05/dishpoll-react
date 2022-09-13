@@ -20,7 +20,7 @@ const TabScreen = () => {
         <TabHero />
         <div className="flex gap-12 flex-wrap justify-center">
           <Tab onClick={handleShowDishes}> Vote for Dishes </Tab>
-          <Tab> Poll Results </Tab>
+          <Tab onClick={() => navigate("/dishlist/polls")}>Poll Results</Tab>
         </div>
       </div>
     </div>

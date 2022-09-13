@@ -15,7 +15,7 @@ const PollResultContainer = () => {
 
     setTimeout(() => {
       setIsLoading(false);
-    }, 400);
+    }, 500);
   }, []);
 
   return (

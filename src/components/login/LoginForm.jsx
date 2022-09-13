@@ -23,6 +23,7 @@ const LoginForm = () => {
         alert("Please fill the correct passwod");
         return;
       }
+      localStorage.setItem("authenticated", true);
       setIsUserLoggedIn(true);
       setTimeout(() => {
         navigate("/tabscreen");

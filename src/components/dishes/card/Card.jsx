@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../Button";
 
 const Card = ({
@@ -10,55 +10,66 @@ const Card = ({
   setRankTwo,
   setRankThree,
 }) => {
+  const [selectedBtn, setSelectedBtn] = useState(0);
+
   // handling rank one functionality
   function handleRankOne(id) {
     if (id !== rankTwo && id !== rankThree) {
       setRankOne(id);
+      setSelectedBtn(1);
     }
 
     // switch rank within same dish item
     if (id === rankTwo) {
       setRankTwo(null);
       setRankOne(id);
+      setSelectedBtn(2);
     }
 
     if (id === rankThree) {
       setRankThree(null);
       setRankOne(id);
+      setSelectedBtn(3);
     }
   }
 
   function handleRankTwo(id) {
     if (id !== rankOne && id !== rankThree) {
       setRankTwo(id);
+      setSelectedBtn(2);
     }
 
     // switch rank within same dish item
     if (id === rankOne) {
       setRankOne(null);
       setRankTwo(id);
+      setSelectedBtn(1);
     }
 
     if (id === rankThree) {
       setRankThree(null);
       setRankTwo(id);
+      setSelectedBtn(3);
     }
   }
 
   function handleRankThree(id) {
     if (id !== rankOne && id !== rankTwo) {
       setRankThree(id);
+      setSelectedBtn(3);
     }
 
     // switch rank within same dish item
     if (id === rankOne) {
       setRankOne(null);
       setRankThree(id);
+      setSelectedBtn(1);
     }
 
     if (id === rankTwo) {
       setRankTwo(null);
       setRankThree(id);
+      setSelectedBtn(2);
     }
   }
 
@@ -80,13 +91,22 @@ const Card = ({
 
       <div className="flex gap-4 p-2 items-center">
         <span className="text-xl"> Vote: </span>
-        <Button onClick={(id) => handleRankOne(id)} isActive>
+        <Button
+          isActive={selectedBtn === 1}
+          onClick={(id) => handleRankOne(id)}
+        >
           1
         </Button>
-        <Button onClick={(id) => handleRankTwo(id)} isActive>
+        <Button
+          isActive={selectedBtn === 2}
+          onClick={(id) => handleRankTwo(id)}
+        >
           2
         </Button>
-        <Button onClick={(id) => handleRankThree(id)} isActive>
+        <Button
+          isActive={selectedBtn === 3}
+          onClick={(id) => handleRankThree(id)}
+        >
           3
         </Button>
       </div>
