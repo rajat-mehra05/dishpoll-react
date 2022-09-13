@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../../../api-data/constants";
@@ -12,23 +13,18 @@ const DishesContainer = () => {
   const [rankThree, setRankThree] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  //fetching dishes from api
-  const fetchDishItems = async () => {
-    await fetch(`${API_URL}`)
-      .then((res) => res.json())
-      .then((data) => setDishItems(data));
-  };
-
   useEffect(() => {
-    fetchDishItems();
-
-    if (!localStorage.getItem("dishesList")) {
-      localStorage.setItem("dishesList", JSON.stringify(dishItems));
-    }
-
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
+    const fetchDishes = async () => {
+      const res = await axios.get(`${API_URL}`);
+      setDishItems(res.data);
+      if (!localStorage.getItem("dishesList")) {
+        localStorage.setItem("dishesList", JSON.stringify(res.data)); // itemList will contain list of dishes with corresponding rank
+      }
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
+    };
+    fetchDishes();
   }, []);
 
   // update dishes rank accordingly
