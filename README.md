@@ -8,6 +8,7 @@
 
 - Multiple users to be logged in from given `users.json` list. :white_check_mark:
 - Login Screen done :white_check_mark:
+- Protected routes. :white_check_mark:
 - Fetches the dishes using the given API. :white_check_mark:
 - Allow a user to vote. :white_check_mark:
 - Save the user’s selections for displaying it to him on the next screen for poll results. :white_check_mark:
