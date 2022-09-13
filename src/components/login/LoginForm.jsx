@@ -6,8 +6,8 @@ import Button from "./Button";
 import InputForm from "./InputForm";
 
 const LoginForm = () => {
-  const userName = useInput();
-  const userPassword = useInput();
+  const userName = useInput("amar");
+  const userPassword = useInput("amar123");
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const navigate = useNavigate();
 
@@ -25,7 +25,6 @@ const LoginForm = () => {
       }
       setIsUserLoggedIn(true);
       setTimeout(() => {
-        alert("You are logged in now!");
         navigate("/tabscreen");
       }, 500);
       setIsUserLoggedIn(false);
@@ -35,7 +34,7 @@ const LoginForm = () => {
   return (
     <div className="flex flex-col justify-center my-20 sm:items-center sm:h-full">
       <h1 className="text-center text-2xl font-bold text-[#c94815]">Sign In</h1>
-      <div className="bg-gradient-to-r from-[#dd7d95] to-[#f86b33] sm:w-96 w-80 p-4 my-2 mx-auto space-y-4 text-center">
+      <div className=" bg-[#e98158] sm:w-96 w-80 p-4 my-2 mx-auto space-y-4 text-center">
         <InputForm
           data-key="username"
           type="username"
