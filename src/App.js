@@ -5,7 +5,7 @@ import TabScreen from "./pages/TabScreen";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App h-screen">
       <Router>
         <Routes>
           <Route path="/" element={<LoginPage />} />
