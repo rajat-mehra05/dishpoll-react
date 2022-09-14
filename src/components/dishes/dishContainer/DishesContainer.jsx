@@ -12,6 +12,7 @@ const DishesContainer = () => {
   const [rankTwo, setRankTwo] = useState(null);
   const [rankThree, setRankThree] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedBtn, setSelectedBtn] = useState(0);
 
   useEffect(() => {
     const fetchDishes = async () => {
@@ -26,6 +27,67 @@ const DishesContainer = () => {
     };
     fetchDishes();
   }, []);
+
+  // handling rank one functionality
+  function handleRankOne(id) {
+    if (id !== rankTwo && id !== rankThree) {
+      setRankOne(id);
+      setSelectedBtn(1);
+    }
+
+    // switch rank within same dish item
+    if (id === rankTwo) {
+      setRankTwo(null);
+      setRankOne(id);
+      setSelectedBtn(2);
+    }
+
+    if (id === rankThree) {
+      setRankThree(null);
+      setRankOne(id);
+      setSelectedBtn(3);
+    }
+  }
+
+  function handleRankTwo(id) {
+    if (id !== rankOne && id !== rankThree) {
+      setRankTwo(id);
+      setSelectedBtn(2);
+    }
+
+    // switch rank within same dish item
+    if (id === rankOne) {
+      setRankOne(null);
+      setRankTwo(id);
+      setSelectedBtn(1);
+    }
+
+    if (id === rankThree) {
+      setRankThree(null);
+      setRankTwo(id);
+      setSelectedBtn(3);
+    }
+  }
+
+  function handleRankThree(id) {
+    if (id !== rankOne && id !== rankTwo) {
+      setRankThree(id);
+      setSelectedBtn(3);
+    }
+
+    // switch rank within same dish item
+    if (id === rankOne) {
+      setRankOne(null);
+      setRankThree(id);
+      setSelectedBtn(1);
+    }
+
+    if (id === rankTwo) {
+      setRankTwo(null);
+      setRankThree(id);
+      setSelectedBtn(2);
+    }
+  }
 
   // update dishes rank accordingly
   function updateDishesRanks(id, value) {
@@ -106,12 +168,10 @@ const DishesContainer = () => {
             <Card
               content={item}
               key={item.id}
-              rankOne={rankOne}
-              rankTwo={rankTwo}
-              rankThree={rankThree}
-              setRankOne={setRankOne}
-              setRankTwo={setRankTwo}
-              setRankThree={setRankThree}
+              selectedBtn={selectedBtn}
+              handleRankOne={handleRankOne}
+              handleRankTwo={handleRankTwo}
+              handleRankThree={handleRankThree}
             />
           ))}
         </div>
