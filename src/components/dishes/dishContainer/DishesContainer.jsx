@@ -172,6 +172,9 @@ const DishesContainer = () => {
               handleRankOne={handleRankOne}
               handleRankTwo={handleRankTwo}
               handleRankThree={handleRankThree}
+              rankOne={rankOne}
+              rankTwo={rankTwo}
+              rankThree={rankThree}
             />
           ))}
         </div>

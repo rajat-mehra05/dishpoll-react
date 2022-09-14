@@ -2,10 +2,12 @@ import React from "react";
 
 const Card = ({
   content,
-  selectedBtn,
   handleRankOne,
   handleRankTwo,
   handleRankThree,
+  rankOne,
+  rankTwo,
+  rankThree,
 }) => {
   return (
     <div className="border-2 border-red-400 w-80 rounded-lg px-2">
@@ -26,25 +28,25 @@ const Card = ({
       <div className="flex gap-4 p-2 items-center">
         <span className="text-xl"> Vote: </span>
         <button
-          className={` ${
-            selectedBtn === 1 ? "bg-orange-900" : "bg-amber-600"
-          }   text-white py-2 px-4 rounded-lg`}
+          className={`${
+            rankOne === content.id ? "bg-orange-900" : "bg-amber-600"
+          } text-white py-2 px-4 rounded-lg`}
           onClick={() => handleRankOne(content.id)}
         >
           1
         </button>
         <button
-          className={` ${
-            selectedBtn === 2 ? "bg-orange-900" : "bg-amber-600"
-          }   text-white py-2 px-4 rounded-lg`}
+          className={`${
+            rankTwo === content.id ? "bg-orange-900" : "bg-amber-600"
+          } text-white py-2 px-4 rounded-lg`}
           onClick={() => handleRankTwo(content.id)}
         >
           2
         </button>
         <button
-          className={` ${
-            selectedBtn === 3 ? "bg-orange-900" : "bg-amber-600"
-          }   text-white py-2 px-4 rounded-lg`}
+          className={`${
+            rankThree === content.id ? "bg-orange-900" : "bg-amber-600"
+          } text-white py-2 px-4 rounded-lg`}
           onClick={() => handleRankThree(content.id)}
         >
           3
